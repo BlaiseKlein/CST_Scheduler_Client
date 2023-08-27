@@ -1,38 +1,225 @@
-.App {
+.header {
+  height: 150px;
+  width: 100vw;
+  background-color: #03001C;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.welcome {
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.menu {
+  color: #B6EADA;
+  font-size: 100px;
+  grid-column: 1;
+}
+
+.addSchedule {
+  color: #B6EADA;
+  font-size: 100px;
+  grid-column: 3;
+}
+
+.addEvent {
+  color: #B6EADA;
+  font-size: 100px;
+  grid-column: 4;
+}
+
+.account {
+  color: #B6EADA;
+  font-size: 100px;
+  grid-column: 6;
+}
+
+.calendar {
+  color: #B6EADA;
+  font-size: 100px;
+  grid-column: 5;
+}
+
+.numBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.eventList {
+  position: relative;
+  background-color: #5B8FB9;
+  outline: solid white;
+}
+
+.eventDayBox {
+  
+}
+
+.eventDescription {
+
+}
+
+.eventDropdown {
+  background-color: #B6EADA;
+  color: black;
+}
+
+.eventDropdown:hover {
+  opacity: 0.8;
+}
+
+.eventBox {
+  background-color: #B6EADA;
+  color: black;
+  width: 10em;
+  height: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
+  text-align: center;
+  border: solid white;
+  border-radius: 15%;
+}
+
+.workBox {
+  background-color: #B6EADA;
+  color: black;
+  width: 10em;
+  height: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
+  text-align: center;
+  border: solid white;
+  border-radius: 15%;
+}
+
+.personalBox {
+  background-color: #B6EADA;
+  color: black;
+  width: 10em;
+  height: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
+  text-align: center;
+  border: solid white;
+  border-radius: 15%;
+}
+
+.importantBox {
+  background-color: #B6EADA;
+  color: black;
+  width: 10em;
+  height: 4em;
+  margin-left: 2em;
+  margin-right: 2em;
+  text-align: center;
+  border: solid white;
+  border-radius: 15%;
+}
+
+.background {
+  background-color: #03001C;
+  color: white;
+  padding-top: 2em;
+}
+
+.row {
+  display: grid;
+  width: 89vw;
+  grid-template-columns: 10% 10% 90%;
+  margin-top: 2em;
+}
+
+.innerBox {
+  width: 5em;
+  height: 4em;
+  border: solid white;
+  border-radius: 15%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.footer {
+  background-color: #03001C;
   color: white;
+  height: 5em;
 }
 
-.App-link {
-  color: #61dafb;
+.titleBackground {
+  background-color: #301E67;
+  height: 5em;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.titleText {
+  height: 2.5em;
+  margin-top: 2em;
+}
+
+.masterGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.scheduleGrid {
+  display: flex;
+  position: relative;
+}
+
+.hourGrid {
+  display: grid;
+  grid-template-rows: repeat(24, 1fr);
+}
+
+.hourGrid > div {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.hourGrid > div > div{
+outline: solid #5B8FB9;
+height: 3em;
+width: 49vw;
+}
+
+.postForm {
+  background-color: #03001C;
+  display: grid;
+  height: 80vh;
+  grid-template-rows: 12% 12% 12% 7% 12% 7% 12% 12%;
+}
+
+.postForm > input {
+  background-color: #5B8FB9;
+  width: 50%;
+  margin-left: 5em;
+}
+
+.postForm > select {
+  background-color: #5B8FB9;
+  width: 50.5%;
+  margin-left: 5em;
+}
+
+.postForm > label {
+  background-color: #5B8FB9;
+  width: 50.25%;
+  margin-left: 4.3em;
+  outline: solid grey;
+}
+
+#postSubmit {
+  width: 25%;
+  justify-self: left;
+  margin-left: 15%;
+}
+
+.modalBtn {
+  margin-left: 5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
 }
