@@ -12,6 +12,27 @@
   grid-template-rows: auto;
 }
 
+.welcomeGrid {
+  display: grid;
+  grid-template-rows: auto;
+  justify-content: center;
+}
+
+.welcomeLink {
+  background-color: #5B8FB9;
+  height: 7.5vh;
+  outline: solid #301E67;
+  text-align: center;
+  width: 50vw;
+  color: black;
+  margin: .2em;
+}
+
+.welcomeLink:hover {
+  color: blue;
+  outline: solid white;
+}
+
 .menu {
   color: #B6EADA;
   font-size: 100px;
@@ -158,6 +179,14 @@
 .titleText {
   height: 2.5em;
   margin-top: 2em;
+}
+
+.lastDay {
+  color: white;
+}
+
+.nextDay {
+  color: white;
 }
 
 .masterGrid {

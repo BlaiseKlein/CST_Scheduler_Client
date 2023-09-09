@@ -8,9 +8,9 @@ function ScheduleItem (props) {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const linkURL = '/course/' + props.info.title;
 
-    const year = props.info.events[0].date.substring(0, 4);
-    const month = props.info.events[0].date.substring(5, 7);
-    const day = props.info.events[0].date.substring(9);
+    const year = props.info.events[0] ? props.info.events[0].date.substring(0, 4) : '0';
+    const month = props.info.events[0] ? props.info.events[0].date.substring(5, 7): '0';
+    const day = props.info.events[0] ? props.info.events[0].date.substring(9): '0';
 
 
     const infoDate = new Date(year, month, day);
@@ -39,6 +39,24 @@ function ScheduleItem (props) {
         padding: '2px'
     }
 
+    const deleteBtn = {
+        position: 'absolute',
+        top: '0',
+        right: '0'
+    }
+
+    async function deleteHandler() {
+        await fetch('http://localhost:3001/scheduleDelete',
+        {   
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(props.info)
+        }).then(() => {
+            console.log("worked");
+        });
+        console.log("btn worked");
+    }
+
     //dev testing, REMOVE LATER
     useEffect(() => {
         console.log(props.info); 
@@ -54,6 +72,7 @@ function ScheduleItem (props) {
                     {props.info.events ? months[infoDate.getMonth()] + " " + infoDate.getDate()  : ''}
                 </div>
             </div>
+            <button onClick={deleteHandler} style={deleteBtn}>Delete this course</button>
         </div>
     )
 }

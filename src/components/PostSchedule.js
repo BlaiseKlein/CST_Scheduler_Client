@@ -1,35 +1,37 @@
 //React and CSS imports
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css'
 // import BasicModal from './BasicModal';
 
 function PostSchedule() {
 
+    const navi = useNavigate();
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     //State for the info sent to the server, compilation of the title, desc, day, start and end times.
-    const [info, setInfo] = useState({title: '', description: '', day: '', start: '', end: ''});
+    const [info, setInfo] = useState({title: '', description: '', day: '', start: '', end: '', events: []});
     //Altered state that allows time to be sent in a proper format
-    const [adjusted, setAdjusted] = useState({title: '', description: '', day: '', start: '', end: ''});
+    const [adjusted, setAdjusted] = useState({title: '', description: '', day: '', start: '', end: '', events: []});
     
 
     //Handles the submition of the new schedule item.
     async function submitHandler(e) {
         e.preventDefault();
         alert(typeof info);
-        console.log(info.title.trim().length)
-        console.log(info.description.trim().length)
-        console.log(info.day.trim().length)
-        console.log(info.start.trim().length)
-        console.log(info.end.trim().length)
         if (adjusted.title.trim().length > 0 && adjusted.description.trim().length > 0 && adjusted.day.trim().length > 0
             && adjusted.start.trim().length > 0 && adjusted.end.trim().length > 0){
-                console.log("yes")
                 await fetch('http://localhost:3001/schedulePost', 
                     {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(adjusted)
-                    }).then(() => {
-                        console.log("worked");
+                    }).then((response) => {
+                        return response.json();
+                    }).then((data) => {
+                        console.log(data.return);
+                        if (data.return == 'yes'){
+                            navi('/schedule/' + days.indexOf(info.day));
+                        }
                     })
             }
     }
@@ -61,7 +63,7 @@ function PostSchedule() {
     //Handles the start time being entered, changes the start state.
     function startHander(e) {
         setInfo({...info, start: e.target.value})
-        setAdjusted({...info, start: e.target.value})
+        setAdjusted({...adjusted, start: e.target.value.replace(':', '')})
         // setStart(e.target.value);
         console.log(info);
         console.log(info.start.trim().length)
@@ -71,7 +73,7 @@ function PostSchedule() {
     //Handles the end time being entered, changes the end state.
     function endHandler(e) {
         setInfo({...info, end: e.target.value})
-        setAdjusted({...info, end: e.target.value})
+        setAdjusted({...adjusted, end: e.target.value.replace(':', '')})
         // setEnd(e.target.value);
         console.log(info);
         console.log(info.end.trim().length)

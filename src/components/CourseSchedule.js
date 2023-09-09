@@ -31,7 +31,7 @@ function CourseSchedule (props) {
         <div className='background'>
             {events.events.map(
                 data => (
-                    <CourseEvent key={events.events.indexOf(data)} info={data}/>
+                    <CourseEvent key={events.events.indexOf(data)} index={events.events.indexOf(data)} info={data}/>
                 )
             )}
             <Link to='/postEvent'>Add a new Event</Link>

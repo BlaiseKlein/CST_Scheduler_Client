@@ -9,11 +9,7 @@ import Title from './Title';
 //Day is the grid display of each day in the week and the number of events that day.
 function Day(props) {
     //Server variables setup
-    const [backendData, setBackendData] = useState([{}]);
-
-    //Setup of schedule display
-    let [courses, setCourses] = useState([]);
-    let [courseJSX, setCourseJSX] = useState([]);
+    const [backendData, setBackendData] = useState([]);
 
     const { day } = useParams();
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -46,7 +42,7 @@ function Day(props) {
 
     useEffect(() => {
         asyncFetch();
-    }, [])
+    }, [day])
 
     return (
         <>
